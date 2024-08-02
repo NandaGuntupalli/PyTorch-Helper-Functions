@@ -8,12 +8,21 @@ from torchmetrics import Accuracy
 import random
 import matplotlib.pyplot as plt
 
-def visualize_images(data, class_names, num_of_images):
+def visualize_grayscale_images(data, class_names, num_of_images):
   indexes = num_of_images
   for i in range(indexes):
       image, label = data[i]
       print(f'Image shape: {image.shape}')
-      plt.imshow(image.squeeze(), cmap='gray')
+      plt.imshow(image.squeeze(), cmap='gray)
+      plt.title(f'Class: {class_names[label]}')
+      plt.show()
+
+def visualize_color_images(data, class_names, num_of_images):
+  indexes = num_of_images
+  for i in range(indexes):
+      image, label = data[i]
+      print(f'Image shape: {image.shape}')
+      plt.imshow(image.permute(1, 2, 0))
       plt.title(f'Class: {class_names[label]}')
       plt.show()
 
