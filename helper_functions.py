@@ -8,6 +8,15 @@ from torchmetrics import Accuracy
 import random
 import matplotlib.pyplot as plt
 
+def visualize_images(data, class_names, num_of_images):
+  indexes = num_of_images
+  for i in range(indexes):
+      image, label = data[i]
+      print(f'Image shape: {image.shape}')
+      plt.imshow(image.squeeze(), cmap='gray')
+      plt.title(f'Class: {class_names[label]}')
+      plt.show()
+
 def train_segment(model, train_dataloader, loss_fn, optimizer, accuracy_fn, device):
   train_loss, train_acc = 0, 0
   for batch, (X, y) in enumerate(train_dataloader):
